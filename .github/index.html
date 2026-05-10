@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petar Dizajn - Premium Digitalna Agencija</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #050816;
+      --bg-light: #0d1329;
+      --card: rgba(17, 25, 55, 0.65);
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #9ca3af;
+      --primary: #4f7cff;
+      --secondary: #7f5cff;
+      --gradient: linear-gradient(135deg, #4f7cff, #7f5cff);
+      --shadow: 0 10px 40px rgba(79,124,255,0.35);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f6f7fb;
+      color: #111827;
+      overflow-x: hidden;
+    }
+
+    .dark-section {
+      background: radial-gradient(circle at top, #14214b 0%, #050816 45%, #02040d 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.45) 40%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+  z-index: 1;
+}
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(79,124,255,0.5);
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    .glow.one {
+      width: 300px;
+      height: 300px;
+      top: 50px;
+      right: 100px;
+    }
+    .project-card:nth-child(1) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2)),
+    url('1.jpg') center/cover no-repeat;
+}
+    .glow.two {
+      width: 250px;
+      height: 250px;
+      bottom: 50px;
+      left: -100px;
+      background: rgba(127,92,255,0.45);
+    }
+    .project-card:nth-child(2) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2)),
+    url('2.jpg') center/cover no-repeat;
+}
+.project-card:nth-child(3) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2)),
+    url('3.jpg') center/cover no-repeat;
+}
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 8, 22, 0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .logo-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--gradient);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: white;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: white;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 100px 0 80px;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      margin-bottom: 24px;
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #4f7cff, #76a2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .device {
+      position: absolute;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      backdrop-filter: blur(20px);
+    }
+
+    .laptop {
+      width: 520px;
+      height: 340px;
+      padding: 18px;
+      transform: rotate(-4deg);
+    }
+
+    .phone {
+      width: 160px;
+      height: 320px;
+      left: 40px;
+      bottom: 50px;
+      z-index: 3;
+      padding: 10px;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #0f172a, #081020);
+      padding: 20px;
+      position: relative;
+    }
+
+    .screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(79,124,255,0.2), transparent 60%);
+    }
+
+    .mock-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px;
+    }
+
+    .mock-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: var(--gradient);
+    }
+
+    .mock-button {
+      width: 90px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--gradient);
+    }
+
+    .mock-heading {
+      width: 75%;
+      height: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mock-heading.large {
+      height: 34px;
+      width: 85%;
+    }
+
+    .mock-text {
+      width: 90%;
+      height: 14px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 10px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-top: 45px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+      min-width: 160px;
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .trusted {
+      padding: 35px 0 70px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .trusted-row {
+      
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+
+  padding: 0 40px;
+    }
+    .trusted-row img {
+  width: 100px;
+  height: 100px;
+
+  object-fit: contain;
+
+display: block;
+
+opacity: 0.9;
+
+filter:
+  drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+
+transition: .3s ease;
+}
+.trusted-row img:hover {
+
+transform: translateY(-4px) scale(1.06);
+
+filter:
+  drop-shadow(0 8px 22px rgba(79,124,255,0.35));
+
+}
+    section {
+      padding: 110px 0;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .section-header h2 span {
+      color: var(--primary);
+    }
+
+    .section-header p {
+      max-width: 480px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 36px;
+      overflow: hidden;
+      height: 520px;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .floating-box {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      background: white;
+      border-radius: 28px;
+      padding: 25px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+      width: 320px;
+    }
+
+    .floating-box h4 {
+      font-size: 2rem;
+      color: #111827;
+    }
+
+    .floating-box span {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .check-list {
+      list-style: none;
+      margin-top: 35px;
+    }
+
+    .check-list li {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(79,124,255,0.15);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .services-grid,
+    .projects-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 32px;
+      padding: 40px 30px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(15,23,42,0.08);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(79,124,255,0.06);
+      right: -70px;
+      top: -70px;
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      background: var(--gradient);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .service-card li {
+      margin-bottom: 12px;
+      color: #374151;
+    }
+
+    .projects {
+      background: radial-gradient(circle at top, #14214b 0%, #050816 50%, #02040d 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 300px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      display: flex;
+      align-items: end;
+      transition: 0.35s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    .project-card::before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-content span {
+      color: #ffffff;
+      font-size: 0.95rem;
+    }
+
+    .project-content h3 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 30px;
+      backdrop-filter: blur(18px);
+    }
+
+    .testimonial-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f7cff, #7f5cff);
+    }
+
+    .stars {
+      color: gold;
+    }
+
+    .testimonial p {
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .cta {
+      margin-top: 90px;
+      padding: 60px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, rgba(79,124,255,0.9), rgba(127,92,255,0.9));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      box-shadow: 0 20px 60px rgba(79,124,255,0.35);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background: #03050f;
+      color: white;
+      padding: 90px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-grid p,
+    .footer-grid li,
+    .footer-grid a {
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      text-decoration: none;
+      list-style: none;
+    }
+    .more-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.more-text.active {
+  max-height: 700px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+    .footer-grid h4 {
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+    }
+
+    .newsletter {
+      display: flex;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 16px 20px;
+      color: white;
+      outline: none;
+    }
+
+    .newsletter button {
+      border: none;
+      background: var(--gradient);
+      color: white;
+      padding: 0 24px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 18px 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  backdrop-filter: blur(10px);
+}
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-image {
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .5s;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* POPUP */
+
+.image-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .3s;
+}
+
+.image-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-popup img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 22px;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: white;
+  color: #111827;
+  width: fit-content;
+  padding: 16px 30px;
+  font-weight: 700;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    @media (max-width: 992px) {
+      .hero-content,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-visual {
+        height: 500px;
+      }
+
+      .laptop {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .phone {
+        width: 130px;
+        height: 260px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cta {
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .stats {
+        flex-direction: column;
+      }
+
+      .floating-box {
+        width: calc(100% - 40px);
+        left: 20px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-header {
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<div class="image-popup">
+    <img src="" alt="">
+  </div>
+<body>
+
+  <nav>
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <div class="logo-box">✦</div>
+        PETAR DIZAJN
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Početna</a></li>
+        <li><a href="#about">O nama</a></li>
+        <li><a href="#services">Usluge</a></li>
+        <li><a href="#projects">Portfolio</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+
+      <a href="#contact-form" class="btn btn-primary">
+        Pošalji Upit →
+      </a>
+    </div>
+  </nav>
+
+  <section class="dark-section hero" id="home">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="container hero-content">
+      <div>
+        <div class="badge">★ #1 Creative Digital Agency</div>
+
+        <h1>
+          Gradimo Premium <span>Digitalna Iskustva</span> Koja Donose Rezultate
+        </h1>
+
+        <p>
+          Moderan web dizajn, brendiranje i digitalni marketing koji podižu vaš biznis na viši nivo i donose više klijenata.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Počnite Vaš Projekat</a>
+          <a href="#projects" class="btn btn-secondary">Pogledaj Portfolio</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <h3>100+</h3>
+            <span>Klijenata</span>
+          </div>
+
+          <div class="stat-card">
+            <h3>5★</h3>
+            <span>Recenzije</span>
+          </div>
+
+          <div class="stat-card">
+            <h3>Brza</h3>
+            <span>Isporuka</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="device laptop">
+          <div class="screen">
+            <div class="mock-nav">
+              <div class="mock-logo"></div>
+              <div class="mock-button"></div>
+            </div>
+
+            <div class="mock-heading large"></div>
+            <div class="mock-heading"></div>
+
+            <div class="mock-text"></div>
+            <div class="mock-text"></div>
+            <div class="mock-text" style="width:70%"></div>
+          </div>
+        </div>
+
+        <div class="device phone">
+          <div class="screen">
+            <div class="mock-logo" style="margin-bottom:20px"></div>
+            <div class="mock-heading"></div>
+            <div class="mock-text"></div>
+            <div class="mock-text"></div>
+            <div class="mock-button" style="width:100%;margin-top:20px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-section trusted">
+    <div class="trusted-row">
+
+      <img src="logo/brile.png" alt="Logo 1">
+      <img src="logo/cvecara.png" alt="Logo 2">
+      <img src="logo/dermatina.png" alt="Logo 3">
+      <img src="logo/otkup.png" alt="Logo 4">
+      <img src="logo/isotex.png" alt="Logo 5">
+    
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <div class="floating-box">
+          <div>
+            <h4>150+</h4>
+            <span>Projects Completed</span>
+          </div>
+
+          <div>
+            <h4>5</h4>
+            <span>Years Experience</span>
+          </div>
+
+          <div>
+            <h4>98%</h4>
+            <span>Client Satisfaction</span>
+          </div>
+
+          <div>
+            <h4>24/7</h4>
+            <span>Support Available</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="badge" style="color:#4f7cff;background:rgba(79,124,255,0.1)">
+          ABOUT US
+        </div>
+
+        <h2 style="font-size:3rem;line-height:1.15;margin-bottom:25px;">
+          Kreiramo Brendove Koji <span style="color:#4f7cff">Se Izdvajaju</span>
+        </h2>
+
+        <p style="color:#6b7280;line-height:1.9;font-size:1.05rem;">
+          Profesionalna agencija fokusirana na moderna dizajn rešenja, konverzije i premium digitalno iskustvo koje ostavlja jak utisak i donosi rezultate.
+        </p>
+
+        <ul class="check-list">
+          <li><div class="check-icon">✓</div> Kreativan dizajn koji privlači pažnju</li>
+          <li><div class="check-icon">✓</div> Strategije koje donose stvarne rezultate</li>
+          <li><div class="check-icon">✓</div> Transparentna komunikacija i podrška</li>
+          <li><div class="check-icon">✓</div> Posvećenost kvalitetu i dugoročnom uspehu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="badge" style="color:#4f7cff;background:rgba(79,124,255,0.1)">
+            OUR SERVICES
+          </div>
+
+          <h2>Premium <span>Digitalne Usluge</span></h2>
+        </div>
+
+        <p>
+          Sve što vam je potrebno za snažan digitalni nastup na jednom mestu.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">⌘</div>
+          
+            <h3>Web Dizajn</h3>
+          
+            <p>
+              Moderni, brzi i responsivni web sajtovi koji pružaju vrhunsko korisničko iskustvo.
+            </p>
+          
+            <ul>
+              <li>✓ Modern UI/UX Design</li>
+              <li>✓ Responsive Layouts</li>
+              <li>✓ High-Converting Pages</li>
+            </ul>
+          
+            <!-- DODATNI TEKST -->
+            <div class="more-text">
+              <p>
+                Izrađujemo premium web sajtove optimizovane za brzinu,
+                SEO i konverzije kako biste dobili više klijenata.
+              </p>
+          
+              <p>
+                Svaki sajt je prilagođen vašem brendu i modernim trendovima.
+              </p>
+            </div>
+          
+            <a href="#" class="btn btn-primary learn-more-btn">
+              Learn More
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">✎</div>
+          
+            <h3>Grafički Dizajn</h3>
+          
+            <p>
+              Kreiramo vizuelne identitete koji predstavljaju vaš brend na najbolji način.
+            </p>
+          
+            <ul>
+              <li>✓ Branding & Identity</li>
+              <li>✓ Logo Design</li>
+              <li>✓ Social Media Visuals</li>
+            </ul>
+          
+            <!-- DODATNI TEKST -->
+            <div class="more-text">
+              <p>
+                Dizajniramo moderne i profesionalne vizuale koji izdvajaju vaš biznis od konkurencije.
+              </p>
+          
+              <p>
+                Od logotipa i kompletnog brendinga do društvenih mreža, flajera,
+                vizit kartica i reklamnih materijala.
+              </p>
+          
+              <p>
+                Fokusirani smo na premium izgled, prepoznatljiv identitet i dizajn
+                koji ostavlja snažan utisak na klijente.
+              </p>
+            </div>
+          
+            <a href="#" class="btn btn-primary learn-more-btn">
+              Learn More
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">↗</div>
+          
+            <h3>Digitalni Marketing</h3>
+          
+            <p>
+              Efikasne digitalne strategije koje povećavaju vidljivost i prodaju.
+            </p>
+          
+            <ul>
+              <li>✓ Meta Ads Campaigns</li>
+              <li>✓ SEO Optimization</li>
+              <li>✓ Lead Generation</li>
+            </ul>
+          
+            <!-- DODATNI TEKST -->
+            <div class="more-text">
+              <p>
+                Kreiramo profesionalne Meta Ads kampanje koje dovode kvalitetne leadove i povećavaju prodaju.
+              </p>
+          
+              <p>
+                Fokusirani smo na Facebook i Instagram oglašavanje, SEO optimizaciju,
+                strategiju sadržaja i rast vašeg online prisustva.
+              </p>
+          
+              <p>
+                Analiziramo tržište, ciljnu publiku i konkurenciju kako bismo postigli maksimalne rezultate uz optimalan budžet.
+              </p>
+            </div>
+          
+            <a href="#" class="btn btn-primary learn-more-btn">
+              Learn More
+            </a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="badge">OUR WORK</div>
+          <h2>Izdvojeni <span>Projekti</span></h2>
+        </div>
+
+        <a href="#" class="btn btn-secondary">View All Projects</a>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+            <img
+            src="1.jpg"
+            class="project-image"
+            alt="Logo Design">
+          <div class="project-content">
+            <span>Logo Design</span>
+
+            <h3>Premium Brand Identity</h3>
+            
+            <p>
+              Moderna i profesionalna logo rešenja koja izdvajaju vaš brend i ostavljaju snažan prvi utisak.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-card">
+            <img
+            src="2.jpg"
+            class="project-image"
+            alt="Logo Design">
+        
+          <div class="project-content">
+            <span>Business Card Design</span>
+
+<h3>Premium Vizit Kartice</h3>
+
+<p>
+  Moderan i profesionalan dizajn vizit kartica koji ostavlja snažan prvi utisak.
+</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+            <img
+            src="3.jpg"
+            class="project-image"
+            alt="Logo Design">
+        
+          <div class="project-content">
+            <span>Digital Marketing</span>
+
+<h3>Meta Ads Campaigns</h3>
+
+<p>
+  Strategije i kampanje koje povećavaju vidljivost, prodaju i broj klijenata.
+</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:120px">
+        <div>
+          <div class="badge">TESTIMONIALS</div>
+          <h2>Veruju Nam <span>Uspešni Biznisi</span></h2>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-top">
+            <div class="person">
+              <div class="avatar"></div>
+              <div>
+                <strong>Marko</strong>
+                <div style="color:#9ca3af">Eko Kaldrma</div>
+              </div>
+            </div>
+
+            <div class="stars">★★★★★</div>
+          </div>
+
+          <p>
+            Sve pohvale. Dobili smo ono sto smo zeleli. Verujem da cemo opet saradjivati ☺️
+          </p>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-top">
+            <div class="person">
+              <div class="avatar"></div>
+              <div>
+                <strong>Nenad</strong>
+                <div style="color:#9ca3af"></div>
+              </div>
+            </div>
+
+            <div class="stars">★★★★★</div>
+          </div>
+
+          <p>
+            Odlična saradnja, korektan maksimalno. Sve preporuke
+          </p>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-top">
+            <div class="person">
+              <div class="avatar"></div>
+              <div>
+                <strong>Nikola Dimitrijevic</strong>
+                <div style="color:#9ca3af">Krca Izgradnja</div>
+              </div>
+            </div>
+
+            <div class="stars">★★★★★</div>
+          </div>
+
+          <p>
+            Brzo odradjen logo, profesionalno i pristupacne cene.. Sve pohvale
+          </p>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-top">
+            <div class="person">
+              <div class="avatar"></div>
+              <div>
+                <strong>Roland Kiss</strong>
+                <div style="color:#9ca3af">Limomix</div>
+              </div>
+            </div>
+
+            <div class="stars">★★★★★</div>
+          </div>
+
+          <p>
+            Korekt i perfekt dizajn. Sve preporuke
+          </p>
+        </div>
+      </div>
+      
+
+      <div class="cta" id="contact-form">
+        <div style="flex:1;min-width:300px;">
+          <h2>Pošaljite Upit</h2>
+      
+          <p style="color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:30px;">
+            Kontaktirajte nas i dobijte profesionalno rešenje za vaš biznis.
+          </p>
+      
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Vaše ime" required>
+            </div>
+      
+            <div class="form-group">
+              <input type="email" placeholder="Email adresa" required>
+            </div>
+      
+            <div class="form-group">
+              <input type="text" placeholder="Naziv firme">
+            </div>
+      
+            <div class="form-group">
+              <textarea placeholder="Opišite vaš projekat..." required></textarea>
+            </div>
+      
+            <button type="submit" class="btn submit-btn">
+              Pošalji Upit
+            </button>
+          </form>
+        </div>
+      </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <div class="logo-box">✦</div>
+            PETAR DIZAJN
+          </div>
+
+          <p style="margin-top:20px">
+            Petar Dizajn je digitalna agencija koja kreira moderne web sajtove, vizuelne identitete i marketinške strategije koje donose rezultate.
+          </p>
+
+          <div class="socials">
+            <a href="#">f</a>
+            <a href="#">in</a>
+            <a href="#">ig</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="#home">Početna</a></li>
+            <li><a href="#about">O nama</a></li>
+            <li><a href="#services">Usluge</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Usluge</h4>
+          <ul>
+            <li>Web Dizajn</li>
+            <li>Grafički Dizajn</li>
+            <li>Digitalni Marketing</li>
+            <li>Brendiranje</li>
+            <li>SEO Optimizacija</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Kontakt</h4>
+          <p style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="width:42px;height:42px;border-radius:14px;background:rgba(79,124,255,0.12);display:grid;place-items:center;color:#4f7cff;font-size:1.1rem;">✉</span>
+            <span>petarsamcevic.design@gmail.com</span>
+          </p>
+
+          <p style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="width:42px;height:42px;border-radius:14px;background:rgba(79,124,255,0.12);display:grid;place-items:center;color:#4f7cff;font-size:1.1rem;">☎</span>
+            <span>0643131636</span>
+          </p>
+
+          <p style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="width:42px;height:42px;border-radius:14px;background:rgba(79,124,255,0.12);display:grid;place-items:center;color:#4f7cff;font-size:1.1rem;">⌂</span>
+            <span>Srbija</span>
+          </p>
+
+          <p style="display:flex;align-items:center;gap:12px;">
+            <span style="width:42px;height:42px;border-radius:14px;background:rgba(79,124,255,0.12);display:grid;place-items:center;color:#4f7cff;font-size:1.1rem;">⚡</span>
+            <span>24/7 Podrška</span>
+          </p>
+        </div>
+
+        <div>
+          <h4>Newsletter</h4>
+          <p>Primajte savete i novosti direktno u vaš inbox.</p>
+
+          <div class="newsletter">
+            <input type="email" placeholder="Enter your email">
+            <button>→</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Petar Dizajn. All rights reserved.</span>
+
+        <div style="display:flex;gap:20px;">
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none">Privacy Policy</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+      const learnButtons = document.querySelectorAll('.learn-more-btn');
+
+learnButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const moreText =
+      button.parentElement.querySelector('.more-text');
+
+    moreText.classList.toggle('active');
+
+    if (moreText.classList.contains('active')) {
+      button.textContent = 'Show Less';
+    } else {
+      button.textContent = 'Learn More';
+    }
+  });
+});
+    const links = document.querySelectorAll('.nav-links a');
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+    const popup = document.querySelector('.image-popup');
+const popupImg = popup.querySelector('img');
+
+document.querySelectorAll('.project-image').forEach(img => {
+
+  img.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    popup.classList.add('active');
+
+    popupImg.src = img.src;
+  });
+
+});
+
+popup.addEventListener('click', () => {
+
+  popup.classList.remove('active');
+
+});
+    window.addEventListener('scroll', () => {
+      const cards = document.querySelectorAll('.service-card, .project-card, .testimonial');
+
+      cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.service-card, .project-card, .testimonial').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px)';
+      card.style.transition = 'all .7s ease';
+    });
+
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+</body>
+</html>
